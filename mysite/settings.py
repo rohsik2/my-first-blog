@@ -25,7 +25,7 @@ SECRET_KEY = '-vyd-xct$%)9hx0c^px(1pna(1(&f@x32+e=)m^fsbj)(vce0r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['rohsik2.pythonanywhere.com']
+ALLOWED_HOSTS = ['rohsik2.pythonanywhere.com', 'myfirstblog-qrgzx.run.goorm.io']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'todo',
 ]
 
 MIDDLEWARE = [
