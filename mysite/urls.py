@@ -1,7 +1,8 @@
-from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import path, include #include와 urls를 사용하기위해 import 해줘야 하는것
+
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('blog.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls'))
 ]

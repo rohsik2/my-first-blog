@@ -1,6 +1,6 @@
 h1 a {
 	color: #E06CF5;
-	font-family: 'Lobster';
+	font-family: 'Malgun Gothic';
 }
 
 body {
@@ -8,7 +8,7 @@ body {
 }
 
 .page-header {
-    background-color: #E06CF5;
+    background-color: #000000;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -25,7 +25,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+    font-family: 'Malgun Gothic', cursive;
 }
 
 .date {
@@ -53,5 +53,5 @@ h1, h2, h3, h4 {
 }
 
 .post h1 a, .post h1 a:visited {
-    color: #E06CF5;
+    color: #000000;
 }
