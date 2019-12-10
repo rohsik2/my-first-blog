@@ -5,6 +5,5 @@ from django.urls import path, include #include와 urls를 사용하기위해 imp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
-    path('todo/', include('todo.urls'))
-
+    path('todo/', include('todo.urls')),
 ]
