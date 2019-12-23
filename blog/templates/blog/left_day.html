@@ -26,16 +26,27 @@
 
                     // To set two dates to two variables 
                     var date1 = new Date(); 
-                    var date2 = new Date("07/02/2021"); 
+                    var date2 = new Date("07/02/2021");
+                    var date3 = new Date("05/28/2020");//김근우 전역날
 
                     // To calculate the time difference of two dates 
+                    var Difference_In_Time = date2.getTime() - date1.getTime(); //나
+                    var Difference_In_Time2 = date3.getTime() - date1.getTime();//ㄱㄱㅇ
+
+                    // To calculate the no. of days between two dates 
+                    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); //나
+                    var Difference_In_Days2 = Difference_In_Time2 / (1000 * 3600 * 24); //ㄱㄱㅇ
+                    
                     var Difference_In_Time = date2.getTime() - date1.getTime(); 
+                    var Difference_In_Time2 = date3.getTime() - date1.getTime(); 
 
                     // To calculate the no. of days between two dates 
                     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
-
+                    
                     //To display the final no. of days (result) 
-                    document.write("<h1>남은날 : "+ Difference_In_Days + "</h1>"); 
+                    document.write("<h1>노현욱 남은날 : "+ Difference_In_Days + "</h1>");
+                    document.write("<h1>김근우 남은날 : "+ Difference_In_Days2 + "</h1>");
+                    
                 </script> 
                 </div>
             </div>
