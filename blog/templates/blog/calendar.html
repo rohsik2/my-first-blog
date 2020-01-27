@@ -4,4 +4,38 @@
     {% if user.is_authenticated %}
 <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FSeoul&amp;src=cm9oc2lrMkBnbWFpbC5jb20&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=eXVyaWdvb215a2lkNTA1QGdtYWlsLmNvbQ&amp;src=a28uc291dGhfa29yZWEjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23336699&amp;color=%23329262&amp;color=%239F3501&amp;color=%23227F63" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     {% endif %}
+    <div class="content container">
+            <div class="row">
+                <div class="col-md-8" >
+                <script type = "text/javascript" > 
+                    // JavaScript program to illustrate 
+                    // calculation of no. of days between two date 
+
+                    // To set two dates to two variables 
+                    var date1 = new Date(); 
+                    var date2 = new Date("07/02/2021");
+                    var date3 = new Date("05/28/2020");//김근우 전역날
+
+                    // To calculate the time difference of two dates 
+                    var Difference_In_Time = date2.getTime() - date1.getTime(); //나
+                    var Difference_In_Time2 = date3.getTime() - date1.getTime();//ㄱㄱㅇ
+
+                    // To calculate the no. of days between two dates 
+                    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); //나
+                    var Difference_In_Days2 = Difference_In_Time2 / (1000 * 3600 * 24); //ㄱㄱㅇ
+                    
+                    var Difference_In_Time = date2.getTime() - date1.getTime(); 
+                    var Difference_In_Time2 = date3.getTime() - date1.getTime(); 
+
+                    // To calculate the no. of days between two dates 
+                    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+                    
+                    //To display the final no. of days (result) 
+                    document.write("<h1>현욱이 남은날 : "+ Difference_In_Days + "</h1>");
+                    //document.write("<h1>김근우 남은날 : "+ Difference_In_Days2 + "</h1>");
+                    
+                </script> 
+                </div>
+            </div>
+		</div>
 {% endblock %}
