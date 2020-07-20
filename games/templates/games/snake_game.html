@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop - lesson 1: create the Canvas and draw on it</title>
+    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+</head>
+<body>
+
+<div class="canvas-wrapper">
+    <canvas id="tic-tac-toe-board" class="center-v"></canvas>
+
+<script>
+    'use strict';
+
+var player = 1;
+var lineColor = "#353535";
+
+var canvas = document.getElementById('tic-tac-toe-board');
+var context = canvas.getContext('2d');
+var canvasSize = 500;
+var sectionSize = canvasSize / 9;
+canvas.width = canvasSize;
+canvas.height = canvasSize;
+context.translate(0.5, 0.5);
+
+function getInitialBoard (defaultValue) {
+  var board = [];
+
+  for (var x = 0;x < 9;x++) {
+    board.push([]);
+
+    for (var y = 0;y < 9;y++) {
+      board[x].push(defaultValue);
+    }
+  }
+
+  return board;
+}
+
+var board = getInitialBoard("");
+
+function addPlayingPiece (mouse) {
+  var xCordinate;
+  var yCordinate;
+
+  for (var x = 0;x < 9;x++) {
+    for (var y = 0;y < 9;y++) {
+      xCordinate = x * sectionSize;
+      yCordinate = y * sectionSize;
+
+      if (
+          mouse.x >= xCordinate && mouse.x <= xCordinate + sectionSize &&
+          mouse.y >= yCordinate && mouse.y <= yCordinate + sectionSize
+        ) {
+        
+        //clearPlayingArea(xCordinate, yCordinate);
+
+        if (player === 1) {
+          drawX(xCordinate, yCordinate);
+        } else {
+          drawO(xCordinate, yCordinate);
+        }
+      }
+    }
+  }
+}
+
+function drawO (xCordinate, yCordinate) {
+  var halfSectionSize = (0.5 * sectionSize);
+  var centerX = xCordinate + halfSectionSize;
+  var centerY = yCordinate + halfSectionSize;
+  var radius = (sectionSize-20) / 2;
+  var startAngle = 0 * Math.PI; 
+  var endAngle = 2 * Math.PI;
+
+  
+  context.beginPath();
+  context.arc(centerX, centerY, radius, startAngle, endAngle);
+  context.fillStyle = "#000000";
+  context.fill();
+}
+
+function drawX (xCordinate, yCordinate) {
+var halfSectionSize = (0.5 * sectionSize);
+  var centerX = xCordinate + halfSectionSize;
+  var centerY = yCordinate + halfSectionSize;
+  var radius = (sectionSize-20) / 2;
+  var startAngle = 0 * Math.PI; 
+  var endAngle = 2 * Math.PI;
+  context.beginPath();
+  
+  var offset = 50;
+  context.beginPath();
+  context.arc(centerX, centerY, radius, 0, Math.PI*2);
+  context.fillStyle = "#ffffff";
+  context.fill()
+}
+
+function drawLines (lineWidth, strokeStyle) {
+  var lineStart = sectionSize/2;
+  var lineLenght = canvasSize-sectionSize/2;
+  context.lineWidth = lineWidth;
+  context.lineCap = 'round';
+  context.strokeStyle = strokeStyle;
+  context.beginPath();
+
+  /*
+   * Horizontal lines 
+   */
+  for (var y = 0;y < 9;y++) {  
+    context.moveTo(lineStart, y * sectionSize + sectionSize/2);
+    context.lineTo(lineLenght, y * sectionSize + sectionSize/2);
+  }
+
+  /*
+   * Vertical lines 
+   */
+  for (var x = 0;x < 9;x++) {
+    context.moveTo(x * sectionSize+ sectionSize/2, lineStart);
+    context.lineTo(x * sectionSize+ sectionSize/2, lineLenght);
+  }
+
+  context.stroke();
+}
+
+context.fillStyle = "#997000";
+context.fillRect(0,0,canvas.width, canvas.height);
+
+drawLines(3, lineColor);
+function getCanvasMousePosition (event) {
+  var rect = canvas.getBoundingClientRect();
+
+  return {
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top
+  }
+}
+
+canvas.addEventListener('mouseup', function (event) {
+  if (player === 1) {
+    player = 2;
+  } else {
+    player = 1;
+  }
+
+  var canvasMousePosition = getCanvasMousePosition(event);
+  addPlayingPiece(canvasMousePosition);
+});
+    
+</script>
+
+</body>
+</html>
