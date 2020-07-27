@@ -15,7 +15,17 @@
 
 var player = 1;
 var lineColor = "#353535";
-
+var game_board = [
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0]
+];
 var canvas = document.getElementById('tic-tac-toe-board');
 var context = canvas.getContext('2d');
 var canvasSize = 500;
@@ -40,10 +50,10 @@ function getInitialBoard (defaultValue) {
 
 var board = getInitialBoard("");
 
+
 function addPlayingPiece (mouse) {
   var xCordinate;
   var yCordinate;
-
   for (var x = 0;x < 9;x++) {
     for (var y = 0;y < 9;y++) {
       xCordinate = x * sectionSize;
@@ -55,17 +65,49 @@ function addPlayingPiece (mouse) {
         ) {
         
         //clearPlayingArea(xCordinate, yCordinate);
-
-        if (player === 1) {
-          drawX(xCordinate, yCordinate);
-        } else {
-          drawO(xCordinate, yCordinate);
+        if(game_board[x][y] == 0){
+            if (player === 1) {
+              drawX(xCordinate, yCordinate);
+              game_board[x][y] = 1;
+            } else {
+              drawO(xCordinate, yCordinate);
+              game_board[x][y] = 2;
+            }
+        }else{
+            drawBlank(xCordinate, yCordinate);
+            game_board[x][y] = 0;
         }
       }
     }
   }
 }
+function drawBlank(xCordinate, yCordinate){
+    var halfSectionSize = (0.5 * sectionSize);
+    var centerX = xCordinate + halfSectionSize;
+    var centerY = yCordinate + halfSectionSize;
+    var radius = (sectionSize-20) / 2 + 10;
+    var startAngle = 0 * Math.PI; 
+    var endAngle = 2 * Math.PI;
+    context.beginPath();
+    context.arc(centerX, centerY, radius, startAngle, endAngle);
+    context.fillStyle = "#997000";
+    context.fill();
+    
+    var lineStart = sectionSize/2;
+    var lineLenght = sectionSize;
+    context.lineWidth = 3;
+    context.lineCap = 'round';
+    context.strokeStyle = "#353535";
+    context.beginPath();
+    context.moveTo(xCordinate, centerY);
+    context.lineTo(xCordinate+sectionSize, centerY);
+    context.moveTo(centerX, yCordinate);
+    context.lineTo(centerX, yCordinate+sectionSize);
 
+    context.stroke();
+}
+    
+    
 function drawO (xCordinate, yCordinate) {
   var halfSectionSize = (0.5 * sectionSize);
   var centerX = xCordinate + halfSectionSize;
@@ -128,6 +170,7 @@ context.fillStyle = "#997000";
 context.fillRect(0,0,canvas.width, canvas.height);
 
 drawLines(3, lineColor);
+    
 function getCanvasMousePosition (event) {
   var rect = canvas.getBoundingClientRect();
 
