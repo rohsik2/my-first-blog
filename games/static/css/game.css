@@ -14,9 +14,11 @@
     text-align : center;
 }
 .h1{
+    align-content:left;
     font-size:30px;
 }
 .h2{
+    align-content:left;
     font-size : 15px;
 }
 .content{
