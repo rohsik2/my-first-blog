@@ -2,13 +2,7 @@
 
 {% block content %}
 <div class="game-wrapper">
-            <canvas id="tic-tac-toe-board" class="center-v"></canvas>
-            <center>
-                <button id="button1" style="WIDTH: 60pt; HEIGHT: 60pt" onclick="prev_button_click();">버튼1</button>
-                <br>
-                <a onClick="window.location.reload()" style="cursor: pointer; WIDTH: 60pt; HEIGHT: 60pt">새 게임</a>
-            </center>
-            
+        <canvas id="tic-tac-toe-board" class="center-v"></canvas>    
         <script>
             'use strict';
 
@@ -252,5 +246,10 @@
 
         </script>
 </div>
-
-{% endblock %}
+<div class="button-wrapper">
+        <center>
+            <button id="button1" style="WIDTH: 120pt; HEIGHT: 60pt" onclick="prev_button_click();">뒤로가기</button>
+            <button id="button2" style="WIDTH: 120pt; HEIGHT: 60pt" onClick="window.location.reload()">새 게임</button>
+        </center>
+</div>
+    {% endblock %}

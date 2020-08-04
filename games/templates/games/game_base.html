@@ -9,20 +9,33 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/game.css' %}">
     <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
 </head>
 <body>
     <div class="wrapper">
         <div class="header">
-            <img src = "static"
+            <div class="logo">
+                <img src= "{% static 'img/Logo.jpg' %}" width="110" height="110" >
+            </div>
+            
+            <h1>
+                Making Game with JS
+            </h1>
+            
+            <h2>
+                게임만들기가 가장 잼남
+            </h2>
+            
         </div>
         
         {% block content %}
         {% endblock %}
         
         <div class="footer">
-            
+            <h9>
+                made by 노현욱
+            </h9>
         </div>
     </div>
 
