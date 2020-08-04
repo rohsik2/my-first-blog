@@ -1,197 +1,256 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop - lesson 1: create the Canvas and draw on it</title>
-    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
-</head>
-<body>
+{% extends 'games/game_base.html' %}
 
-<div class="canvas-wrapper">
-    <canvas id="tic-tac-toe-board" class="center-v"></canvas>
+{% block content %}
+<div class="game-wrapper">
+            <canvas id="tic-tac-toe-board" class="center-v"></canvas>
+            <center>
+                <button id="button1" style="WIDTH: 60pt; HEIGHT: 60pt" onclick="prev_button_click();">버튼1</button>
+                <br>
+                <a onClick="window.location.reload()" style="cursor: pointer; WIDTH: 60pt; HEIGHT: 60pt">새 게임</a>
+            </center>
+            
+        <script>
+            'use strict';
 
-<script>
-    'use strict';
+        var player = 2;
+        var lineColor = "#353535";
+        var game_board = [
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0]
+        ];
+        var canvas = document.getElementById('tic-tac-toe-board');
+        var context = canvas.getContext('2d');
+        var canvasSize = 500;
+        var sectionSize = canvasSize / 9;
+        canvas.width = canvasSize;
+        canvas.height = canvasSize;
+        context.translate(0.5, 0.5);
 
-var player = 1;
-var lineColor = "#353535";
-var game_board = [
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0]
-];
-var canvas = document.getElementById('tic-tac-toe-board');
-var context = canvas.getContext('2d');
-var canvasSize = 500;
-var sectionSize = canvasSize / 9;
-canvas.width = canvasSize;
-canvas.height = canvasSize;
-context.translate(0.5, 0.5);
-
-function getInitialBoard (defaultValue) {
-  var board = [];
-
-  for (var x = 0;x < 9;x++) {
-    board.push([]);
-
-    for (var y = 0;y < 9;y++) {
-      board[x].push(defaultValue);
-    }
-  }
-
-  return board;
-}
-
-var board = getInitialBoard("");
+        var game_history = [];
 
 
-function addPlayingPiece (mouse) {
-  var xCordinate;
-  var yCordinate;
-  for (var x = 0;x < 9;x++) {
-    for (var y = 0;y < 9;y++) {
-      xCordinate = x * sectionSize;
-      yCordinate = y * sectionSize;
+        function getInitialBoard (defaultValue) {
+          var board = [];
 
-      if (
-          mouse.x >= xCordinate && mouse.x <= xCordinate + sectionSize &&
-          mouse.y >= yCordinate && mouse.y <= yCordinate + sectionSize
-        ) {
-        
-        //clearPlayingArea(xCordinate, yCordinate);
-        if(game_board[x][y] == 0){
-            if (player === 1) {
-              drawX(xCordinate, yCordinate);
-              game_board[x][y] = 1;
-            } else {
-              drawO(xCordinate, yCordinate);
-              game_board[x][y] = 2;
+          for (var x = 0;x < 9;x++) {
+            board.push([]);
+
+            for (var y = 0;y < 9;y++) {
+              board[x].push(defaultValue);
             }
-        }else{
-            drawBlank(xCordinate, yCordinate);
-            game_board[x][y] = 0;
+          }
+
+          return board;
         }
-      }
-    }
-  }
-}
-function drawBlank(xCordinate, yCordinate){
-    var halfSectionSize = (0.5 * sectionSize);
-    var centerX = xCordinate + halfSectionSize;
-    var centerY = yCordinate + halfSectionSize;
-    var radius = (sectionSize-20) / 2 + 10;
-    var startAngle = 0 * Math.PI; 
-    var endAngle = 2 * Math.PI;
-    context.beginPath();
-    context.arc(centerX, centerY, radius, startAngle, endAngle);
-    context.fillStyle = "#997000";
-    context.fill();
-    
-    var lineStart = sectionSize/2;
-    var lineLenght = sectionSize;
-    context.lineWidth = 3;
-    context.lineCap = 'round';
-    context.strokeStyle = "#353535";
-    context.beginPath();
-    context.moveTo(xCordinate, centerY);
-    context.lineTo(xCordinate+sectionSize, centerY);
-    context.moveTo(centerX, yCordinate);
-    context.lineTo(centerX, yCordinate+sectionSize);
 
-    context.stroke();
-}
-    
-    
-function drawO (xCordinate, yCordinate) {
-  var halfSectionSize = (0.5 * sectionSize);
-  var centerX = xCordinate + halfSectionSize;
-  var centerY = yCordinate + halfSectionSize;
-  var radius = (sectionSize-20) / 2;
-  var startAngle = 0 * Math.PI; 
-  var endAngle = 2 * Math.PI;
+        var board = getInitialBoard("");
 
-  
-  context.beginPath();
-  context.arc(centerX, centerY, radius, startAngle, endAngle);
-  context.fillStyle = "#000000";
-  context.fill();
-}
 
-function drawX (xCordinate, yCordinate) {
-var halfSectionSize = (0.5 * sectionSize);
-  var centerX = xCordinate + halfSectionSize;
-  var centerY = yCordinate + halfSectionSize;
-  var radius = (sectionSize-20) / 2;
-  var startAngle = 0 * Math.PI; 
-  var endAngle = 2 * Math.PI;
-  context.beginPath();
-  
-  var offset = 50;
-  context.beginPath();
-  context.arc(centerX, centerY, radius, 0, Math.PI*2);
-  context.fillStyle = "#ffffff";
-  context.fill()
-}
+        function addPlayingPiece (mouse) {
+          var xCordinate;
+          var yCordinate;
+          for (var x = 0;x < 9;x++) {
+            for (var y = 0;y < 9;y++) {
+              xCordinate = x * sectionSize;
+              yCordinate = y * sectionSize;
 
-function drawLines (lineWidth, strokeStyle) {
-  var lineStart = sectionSize/2;
-  var lineLenght = canvasSize-sectionSize/2;
-  context.lineWidth = lineWidth;
-  context.lineCap = 'round';
-  context.strokeStyle = strokeStyle;
-  context.beginPath();
+              if (
+                  mouse.x >= xCordinate && mouse.x <= xCordinate + sectionSize &&
+                  mouse.y >= yCordinate && mouse.y <= yCordinate + sectionSize
+                ) {
 
-  /*
-   * Horizontal lines 
-   */
-  for (var y = 0;y < 9;y++) {  
-    context.moveTo(lineStart, y * sectionSize + sectionSize/2);
-    context.lineTo(lineLenght, y * sectionSize + sectionSize/2);
-  }
+                //clearPlayingArea(xCordinate, yCordinate);
+                if(game_board[x][y] == 0){
+                    if (player === 1) {
+                      drawX(xCordinate, yCordinate);
+                      game_board[x][y] = 1;
+                      game_history.push([x,y,1]);
+                    } else {
+                      drawO(xCordinate, yCordinate);
+                      game_board[x][y] = 2;
+                      game_history.push([x,y,2]);
+                    }
+                      if (player === 1) {
+                        player = 2;
+                      } else {
+                        player = 1;
+                      }
+                }else{
+                    drawBlank(xCordinate, yCordinate);
+                    game_history.push([x,y,5 - game_board[x][y]]);
+                    game_board[x][y] = 0;
+                }
+              }
+            }
+          }
+        }
+        function drawBlank(xCordinate, yCordinate){
+            var halfSectionSize = (0.5 * sectionSize);
+            var centerX = xCordinate + halfSectionSize;
+            var centerY = yCordinate + halfSectionSize;
+            var radius = (sectionSize-20) / 2 + 10;
+            var startAngle = 0 * Math.PI; 
+            var endAngle = 2 * Math.PI;
+            context.beginPath();
+            context.arc(centerX, centerY, radius, startAngle, endAngle);
+            context.fillStyle = "#997000";
+            context.fill();
 
-  /*
-   * Vertical lines 
-   */
-  for (var x = 0;x < 9;x++) {
-    context.moveTo(x * sectionSize+ sectionSize/2, lineStart);
-    context.lineTo(x * sectionSize+ sectionSize/2, lineLenght);
-  }
+            var lineStart = sectionSize/2;
+            var lineLenght = sectionSize;
+            context.lineWidth = 3;
+            context.lineCap = 'round';
+            context.strokeStyle = "#353535";
+            context.beginPath();
+            context.moveTo(xCordinate, centerY);
+            context.lineTo(xCordinate+sectionSize, centerY);
+            context.moveTo(centerX, yCordinate);
+            context.lineTo(centerX, yCordinate+sectionSize);
 
-  context.stroke();
-}
+            context.stroke();
+            /*
+            if(xCordinate == 0){
+                context.lineWidth = 53;
+                  context.lineCap = 'round';
+                  context.strokeStyle = "#997000";
+                  context.beginPath();
+                  context.moveTo(xCordinate, yCordinate);
+                  context.lineTo(xCordinate, yCordinate+sectionSize);
+                contest.stroke();
+            }
+            */
+        }
 
-context.fillStyle = "#997000";
-context.fillRect(0,0,canvas.width, canvas.height);
 
-drawLines(3, lineColor);
-    
-function getCanvasMousePosition (event) {
-  var rect = canvas.getBoundingClientRect();
+        function drawO (xCordinate, yCordinate) {
+          var halfSectionSize = (0.5 * sectionSize);
+          var centerX = xCordinate + halfSectionSize;
+          var centerY = yCordinate + halfSectionSize;
+          var radius = (sectionSize-20) / 2 + 5;
+          var startAngle = 0 * Math.PI; 
+          var endAngle = 2 * Math.PI;
 
-  return {
-    x: event.clientX - rect.left,
-    y: event.clientY - rect.top
-  }
-}
 
-canvas.addEventListener('mouseup', function (event) {
-  if (player === 1) {
-    player = 2;
-  } else {
-    player = 1;
-  }
+          context.beginPath();
+          context.arc(centerX, centerY, radius, startAngle, endAngle);
+          context.fillStyle = "#000000";
+          context.fill();
+        }
 
-  var canvasMousePosition = getCanvasMousePosition(event);
-  addPlayingPiece(canvasMousePosition);
-});
-    
-</script>
+        function drawX (xCordinate, yCordinate) {
+        var halfSectionSize = (0.5 * sectionSize);
+          var centerX = xCordinate + halfSectionSize;
+          var centerY = yCordinate + halfSectionSize;
+          var radius = (sectionSize-20) / 2 + 5;
+          var startAngle = 0 * Math.PI; 
+          var endAngle = 2 * Math.PI;
+          context.beginPath();
 
-</body>
-</html>
+          var offset = 50;
+          context.beginPath();
+          context.arc(centerX, centerY, radius, 0, Math.PI*2);
+          context.fillStyle = "#ffffff";
+          context.fill()
+        }
+
+        function drawLines (lineWidth, strokeStyle) {
+          var lineStart = sectionSize/2;
+          var lineLenght = canvasSize-sectionSize/2;
+          context.lineWidth = lineWidth;
+          context.lineCap = 'round';
+          context.strokeStyle = strokeStyle;
+          context.beginPath();
+
+          /*
+           * Horizontal lines 
+           */
+          for (var y = 0;y < 9;y++) {  
+            context.moveTo(lineStart, y * sectionSize + sectionSize/2);
+            context.lineTo(lineLenght, y * sectionSize + sectionSize/2);
+          }
+
+          /*
+           * Vertical lines 
+           */
+          for (var x = 0;x < 9;x++) {
+            context.moveTo(x * sectionSize+ sectionSize/2, lineStart);
+            context.lineTo(x * sectionSize+ sectionSize/2, lineLenght);
+          }
+
+          context.stroke();
+        }
+
+        function eraseLines(){
+              context.lineWidth = 53;
+              context.lineCap = 'round';
+              context.strokeStyle = "#997000";
+              context.beginPath();
+              context.moveTo(0, 0);
+              context.lineTo(0, 500);
+              context.moveTo(0, 500);
+              context.lineTo(500, 500);
+              context.moveTo(0, 0);
+              context.lineTo(500, 0);
+              context.moveTo(500, 0);
+              context.lineTo(500, 500);
+              context.stroke();
+        }
+
+        context.fillStyle = "#997000";
+        context.fillRect(0,0,canvas.width, canvas.height);
+
+        drawLines(3, lineColor);
+
+        function getCanvasMousePosition (event) {
+          var rect = canvas.getBoundingClientRect();
+
+          return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top
+          }
+        }
+
+        function prev_button_click() {
+            if(game_history.length > 0){
+            var last_action = game_history.pop();
+            let x = last_action[0];
+            let y = last_action[1];
+            if(last_action[2] === 1){
+                drawBlank( x * sectionSize, y * sectionSize);
+                player = 1;
+                game_board[x][y] = 0;
+            }
+
+            if(last_action[2] === 2){
+                drawBlank( x * sectionSize, y * sectionSize);
+                player = 2;
+                game_board[x][y] = 0;
+            }
+            if(last_action[2] === 3){
+                drawO(x* sectionSize, y*sectionSize);
+                game_board[x][y] = 1;
+            }
+            if(last_action[2] === 4){
+                drawX(x* sectionSize, y*sectionSize);
+                game_board[x][y] = 2;
+            }
+            }
+        }
+
+        canvas.addEventListener('mouseup', function (event) {
+
+          var canvasMousePosition = getCanvasMousePosition(event);
+          addPlayingPiece(canvasMousePosition);
+        });
+
+        </script>
+</div>
+
+{% endblock %}

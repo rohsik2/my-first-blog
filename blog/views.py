@@ -49,7 +49,7 @@ def comment_list(request, post):
 
 def left_day(request):
     d_start = date(2019, 9, 2)
-    d_fin = date(2021,7,2)
+    d_fin = date(2021,6,16)
     d_delta = d_start-d_fin   
     return render(request,'blog/left_day.html',{'leftday':d_delta})
 
