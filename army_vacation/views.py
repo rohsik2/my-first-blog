@@ -19,3 +19,6 @@ def questionaire(request):
     return render(request, 'army_vacation/questionaire.html')
 
 
+def handbook(request):
+    return render(request, 'army_vacation/handbook.html')
+
