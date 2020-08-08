@@ -1,6 +1,9 @@
-{% extends 'games/game_base.html' %}
+{% extends 'army_vacation/base.html' %}
 
 {% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/go.css' %}">
+
 <div class="game-wrapper">
         <canvas id="tic-tac-toe-board" class="center-v"></canvas>    
         <script>
@@ -248,8 +251,13 @@
 </div>
 <div class="button-wrapper">
         <center>
-            <button id="button1" style="WIDTH: 120pt; HEIGHT: 60pt" onclick="prev_button_click();">뒤로가기</button>
+            <button id="button1" onclick="prev_button_click();">
+                <i class="material-icons md-48">chevron_left</i>
+            </button>
             <button id="button2" style="WIDTH: 120pt; HEIGHT: 60pt" onClick="window.location.reload()">새 게임</button>
+            <button id="button3" onclick="prev_button_click();">
+                <i class="material-icons md-48">chevron_right</i>
+            </button>
         </center>
 </div>
 <style>

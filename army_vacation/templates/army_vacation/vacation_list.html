@@ -1,0 +1,29 @@
+{% extends 'army_vacation/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<table class='striped'>
+        <thead>
+          <tr>
+              <th>휴가 쓴사람</th>
+              <th>출발일</th>
+              <th>복귀일</th>
+              <th>휴가 정보</th>
+          </tr>
+        </thead>
+
+        <tbody>
+    {% for vacation in vacations %}
+    <tr>
+        <td>{{vacation.author}}</td>
+        <td>{{vacation.start_date}}</td>
+        <td>{{vacation.end_date}}</td>
+        <td>{{vacation.reason}}</td>
+    </tr>
+    {% endfor %}
+          
+    </tbody>
+</table>
+{% endblock %}

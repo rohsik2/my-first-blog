@@ -1,0 +1,22 @@
+{% extends 'army_vacation/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="background" style="align : center;">
+    <img src="{% static 'images/rice.jpg' %}">
+</div>
+<div class='food_ment' style='font-size : 2em'>
+    오늘의 식단은
+    {% for food in today_food %}
+        {{food}},	
+    {% endfor %}
+    입니다.
+    
+</div>
+
+<a href="#"><i class="material-icons md-48">mood</i></a>
+
+
+<a href="#"><i class="material-icons md-48">mood_bad</i></a>
+
+{% endblock %}

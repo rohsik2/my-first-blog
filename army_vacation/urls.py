@@ -10,4 +10,6 @@ urlpatterns = [
     path('questionaire', views.questionaire, name='questionaire'),
     path('login', views.login, name='login'),
     path('handbook', views.handbook, name='handbook'),
+    path('food/<int:month_date>', views.food, name='food'),
+    path('vacation_list', views.vacation_list, name='vacation_list'),
 ]
