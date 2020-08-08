@@ -1,0 +1,18 @@
+{% extends 'army_vacation/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<script src="{% static 'js/apply_vacation.js'%}"></script>
+
+출발
+<input type="text" class="datepicker">
+
+복귀
+<input type="text" class="datepicker">
+
+사유(필요시)
+
+<input placeholder="청원 휴가면 필수입력!" id="first_name2" type="text" class="validate">
+<label class="active" for="first_name2">First Name</label>
+
+
+{% endblock %}
