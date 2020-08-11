@@ -35,3 +35,7 @@
 .footer{
     
 }
+
+select{
+    display : unset; !important
+}
