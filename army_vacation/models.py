@@ -17,3 +17,15 @@ class Vacation(models.Model):
         default='YG',)
     start_date = models.DateField()
     end_date = models.DateField()
+    
+class Menu(models.Model):
+    date = models.DateField()
+    breakfast = models.TextField()
+    lunch  = models.TextField()
+    dinner = models.TextField()
+
+class Worker(models.Model):
+    date = models.DateField()
+    carde = models.TextField()
+    day_soldier = models.TextField()
+    night_soldier = models.TextField()

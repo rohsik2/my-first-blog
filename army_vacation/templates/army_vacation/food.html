@@ -1,17 +1,39 @@
 {% extends 'army_vacation/base.html' %}
 {% load staticfiles %}
 {% block content %}
-
-<div class="background" style="align : center;">
-    <img src="{% static 'images/rice.jpg' %}">
+<div class='row'>
+    <div class="background col s12 l6" style="align : center;">
+    <img src="{% static 'images/rice.jpg' %}" width='80%' height='80%'>
 </div>
-<div class='food_ment' style='font-size : 2em'>
-    오늘의 식단은
-    {% for food in today_food %}
-        {{food}},	
-    {% endfor %}
-    입니다.
+<div class='food_ment col s12 l6' style="margin-top : 30px">
     
+    <div class="divider"></div>
+      <div class="section">
+        <h5>아침밥</h5>
+        <p>{% for food in today_food %}
+        {{food.breakfast}},	
+        {% endfor %}
+          </p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>점심밥</h5>
+        <p>{% for food in today_food %}
+        {{food.lunch}},	
+        {% endfor %}
+          </p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>저녁밥</h5>
+        <p>{% for food in today_food %}
+        {{food.dinner}},	
+        {% endfor %}
+          </p>
+      </div>
+    
+</div>
+
 </div>
 
 <a href="#"><i class="material-icons md-48">mood</i></a>

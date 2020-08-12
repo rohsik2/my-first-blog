@@ -1,0 +1,55 @@
+{% extends 'army_vacation/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class='row'>
+    <div class="background col s12 l6" style="align : center;">
+    <img src="{% static 'images/bunker.jpg' %}" width='80%' height='80%' align = 'center'>
+</div>
+<div class='food_ment col s12 l6' style="margin-top : 30px">
+    
+    <div class="divider"></div>
+      <div class="section">
+        <h5>오늘 주간 근무자</h5>
+        <p>{% for worker in today_worker %}
+        {{worker.carde}}
+            <br>
+        {{worker.day_soldier}}
+        {% endfor %}
+          </p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>오늘 야간 근무자</h5>
+        <p>{% for worker in today_worker %}
+        {{worker.carde}}
+            <br>
+        {{worker.night_soldier}}
+        {% endfor %}
+          </p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h5>내일 주간 근무자</h5>
+        <p>{% for worker in next_worker %}
+        {{worker.carde}}
+            <br>
+        {{worker.day_soldier}}
+        {% endfor %}
+          </p>
+      </div>
+      
+      <div class="divider"></div>
+      <div class="section">
+        <h5>내일 야간 근무자</h5>
+        <p>{% for worker in next_worker %}
+        {{worker.carde}}	
+            <br>
+        {{worker.night_soldier}}
+        {% endfor %}
+          </p>
+      </div>
+</div>
+
+</div>
+
+{% endblock %}
