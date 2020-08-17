@@ -1,9 +1,9 @@
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
-from .forms import VacationForm
+from .forms import *
 from datetime import date
-
+from django.conf import settings
 # Create your views here.
 
 
@@ -25,9 +25,6 @@ def apply_vacation(request):
         form = VacationForm()
     return render(request, 'army_vacation/apply_vacation.html', {'form': form})
 
-
-def login(request):
-    return render(request, 'army_vacation/login.html')
 
 
 def questionaire(request):

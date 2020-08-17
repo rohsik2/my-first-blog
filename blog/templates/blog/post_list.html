@@ -1,12 +1,14 @@
-{% extends 'blog/base.html' %}
+{% extends 'army_vacation/base.html' %}
 
+            
 {% block content %}
+<a href="{% url 'post_new' %}" class="top-menu"><i class="large material-icons">add</i></a>
     {% if user.is_authenticated %}
 	{% for post in posts %}
 		<div class="post">
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
 			<div class="date">
-				<p>published: {{ post.published_date}}</p>
+				<h6>published: {{ post.published_date}}</h8>
 			</div>
 			
 			<p>{{ post.text|linebreaks }}</p>

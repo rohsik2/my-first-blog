@@ -1,8 +1,9 @@
 from django.db import models
-
-# Create your models here.
-
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+# Create your models here.f
+import mysite.settings as settings
 class Vacation(models.Model):
     SORT_OF_VACATIONS = (
         ('YG', '연가'),
@@ -10,7 +11,7 @@ class Vacation(models.Model):
         ('WR', '위로휴가'),
         ('CW', '청원휴가'),
         )
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     reason = models.CharField(
         max_length=2,
         choices=SORT_OF_VACATIONS,
@@ -29,3 +30,6 @@ class Worker(models.Model):
     carde = models.TextField()
     day_soldier = models.TextField()
     night_soldier = models.TextField()
+
+
+    

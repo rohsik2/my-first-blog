@@ -23,25 +23,28 @@
               <div class="background">
                 <img src="{% static 'images/Logo.jpg' %}">
               </div>
-              <a href="#!user"><img class="circle" src="{% static 'images/Logo.jpg' %}"></a>
-              <a href="#!name"><span class="white-text name">노현욱</span></a>
-              <a href="#!email"><span class="white-text email">rohsikdak@naver.com</span></a>
+            {% if user.authenticated %}
+              <a href="/account/sign_in"><span class="white-text name">user.name</span></a>
+              <a href="#!email"><span class="white-text email">user.email</span></a>
+            {% else %}
+                <a href="/account/login"><span class="white-text name">로그인을 해주세요</span></a>
+            {% endif %}
             </div>
             </li>
 
             <!--<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li> -->
-
+            <!--
             <li><div class="divider"></div></li>
             <li><a class="subheader">휴가</a></li>
-            <li><a class="waves-effect" a href="../">내 휴가</a></li>
-            <li><a class="waves-effect" a href="../apply_vacation">휴가 신청</a></li>
-            <li><a class="waves-effect" a href="../handbook">휴가 핸드북</a></li>
-            <li><a class="waves-effect" a href="../questionaire">3일 문진표</a></li>
-            <li><a class="waves-effect" a href='../vacation_list'>전우들의 휴가</a></li>
+            <li><a class="waves-effect" a href="/handbook">휴가 핸드북</a></li>
+            <li><a class="waves-effect" a href="/questionaire">3일 문진표</a></li>
+            <li><a class="waves-effect" a href='/'>전우들의 휴가</a></li>
+             -->
             <li><div class="divider"></div></li>
             <li><a class="subheader">병영생활</a></li>
-            <li><a class="waves-effect" a href="../food">오늘의 밥</a></li>
-            <li><a class="waves-effect" a href="../worker">내일 근무</a></li>
+            <li><a class="waves-effect" a href="/food">오늘의 밥</a></li>
+            <li><a class="waves-effect" a href="/worker">내일 근무</a></li>
+            <li><a class="waves-effect" a href="/blog">전파 사항</a></li>
         </ul>
         <div class="row header">
             <div class="col s2">
@@ -49,9 +52,12 @@
                 </div>
 
                 <div class="col s8" style="text-align : center">
+                    <a href="/" style="color:black">
                     <h2>
                         휴가플래너
                     </h2>
+                    </a>
+                    
                 </div>
 
                 <div class="col s2">

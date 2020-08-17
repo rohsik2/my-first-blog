@@ -1,6 +1,9 @@
-{% extends 'blog/base.html' %}
+{% extends 'army_vacation/base.html' %}
 
 {% block content %}
+
+<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+<a href="{% url 'calendar' %}" class="top-menu"><span class="glyphicon glyphicon-calendar"></span></a>
     {% if user.is_authenticated %}
 <iframe src="https://calendar.google.com/calendar/embed?src=rohsik2%40gmail.com&ctz=Asia%2FSeoul" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     {% endif %}

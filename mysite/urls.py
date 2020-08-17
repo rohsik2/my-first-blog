@@ -7,4 +7,5 @@ urlpatterns = [
     path('blog', include('blog.urls')),
     path('games/', include('games.urls')),
     path('', include('army_vacation.urls')),
+    path('account/', include('account.urls')),
 ]

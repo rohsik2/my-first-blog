@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'games',
     'army_vacation',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -116,8 +117,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/blog/'
 LOGOUT_REDIRECT_URL = '/'
+
+AUTH_USER_MODEL = 'account.User'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
