@@ -6,9 +6,9 @@
     {% if user.is_authenticated %}
 	{% for post in posts %}
 		<div class="post">
-            <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
 			<div class="date">
-				<h6>published: {{ post.published_date}}</h8>
+				<h8>published: {{ post.published_date}}</h8>
 			</div>
 			
 			<p>{{ post.text|linebreaks }}</p>
