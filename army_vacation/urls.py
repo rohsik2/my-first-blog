@@ -13,6 +13,8 @@ urlpatterns = [
     path('food', views.food, name='food'),
     path('food/<int:id>', views.food, name='food'),
     path('vacation_list', views.vacation_list, name='vacation_list'),
+    path('worker/', views.night_worker, name='night_worker'),
     path('worker/<str:name>', views.night_worker, name='night_worker'),
+    path('washdish/', views.wash_worker, name='wash_worker'),
     path('washdish/<str:name>', views.wash_worker, name='wash_worker')
 ]

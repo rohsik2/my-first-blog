@@ -1,9 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-# Create your models here.f
 import mysite.settings as settings
+
 class Vacation(models.Model):
     SORT_OF_VACATIONS = (
         ('YG', '연가'),
@@ -25,12 +22,24 @@ class Menu(models.Model):
     lunch  = models.TextField()
     dinner = models.TextField()
 
+    def __str__(self):
+        return str(self.date)
+
 class Worker(models.Model):
     date = models.DateField()
     carde = models.TextField()
     day_soldier = models.TextField()
     night_soldier = models.TextField()
 
+class WashWorker(models.Model):
+    date = models.DateTimeField()
+    time = models.CharField(max_length=10)
+    soldier1 = models.CharField(max_length=10)
+    soldier2 = models.CharField(max_length=10)
+    soldier3 = models.CharField(max_length=10)
+    soldier4 = models.CharField(max_length=10)
+    def __str__(self):
+        return str(self.date + self.time)
 
 class NightWorker(models.Model):
     date = models.DateField()
@@ -40,3 +49,5 @@ class NightWorker(models.Model):
     soldier3 = models.CharField(max_length=10)
     soldier4 = models.CharField(max_length=10)
     soldier5 = models.CharField(max_length=10)
+    def __str__(self):
+        return str(self.date)

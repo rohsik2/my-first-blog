@@ -52,7 +52,7 @@
     <script>
     function doSomething() {
         // alert(document.forms[0].elements['name'].value);
-        var url = "worker/"+document.forms[0].elements['name'].value;
+        var url = document.forms[0].elements['name'].value;
         window.location = url;
         return false;
     }

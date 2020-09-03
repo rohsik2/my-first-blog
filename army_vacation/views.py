@@ -36,7 +36,17 @@ def handbook(request):
 
 
 def food(request, id=0):
-    foods = get_object_or_404(Menu, date = (timezone.now()+timezone.timedelta(days=id)))
+    num_results =Menu.objects.filter(date = (timezone.now()+timezone.timedelta(days=id))).count()
+    if num_results != 0:
+        foods = get_object_or_404(Menu, date = (timezone.now()+timezone.timedelta(days=id)))
+    else:
+        new_food = Menu()
+        new_food.date = timezone.now()+timezone.timedelta(days=id)
+        new_food.breakfast = "입력을 기다려... 주세요..."
+        new_food.lunch = "입력을 기다려... 주세요..."
+        new_food.dinner = "입력을 기다려... 주세요..."
+        new_food.save()
+        foods = new_food
     n_food = int(id)+1
     return render(request, 'army_vacation/food.html', {'food': foods, 'n_day':n_food})
 
@@ -52,9 +62,26 @@ def night_worker(request, name=''):
         enddate = startdate + timedelta(days=6)
         workers = NightWorker.objects.filter(date__range=[startdate, enddate]).order_by('date')
     else:
+        startdate = date.today()
+        enddate = startdate + timedelta(days=30)
         workers = NightWorker.objects.filter(
-            Q(soldier1=name) | Q(soldier2=name)| Q(soldier3=name)| Q(soldier4=name)| Q(soldier5=name)).order_by('date')
+            Q(date__range=[startdate, enddate]) & ( Q(soldier1=name) | Q(soldier2=name)| Q(soldier3=name)| Q(soldier4=name)| Q(soldier5=name))).order_by('date')
     days = []
     for worker in workers:
         days.append(str(worker.date)[5:7]+'월'+str(worker.date)[8:]+'일')
     return render(request, 'army_vacation/worker.html', {'days' : days, 'workers' : workers})
+
+def wash_worker(request, name=''):
+    if name == '':
+        startdate = date.today()
+        enddate = startdate + timedelta(days=6)
+        workers = WashWorker.objects.filter(date__range=[startdate, enddate]).order_by('date')
+    else:
+        startdate = date.today()
+        enddate = startdate + timedelta(days=30)
+        workers = WashWorker.objects.filter(
+            Q(date__range=(startdate, enddate)) | Q(soldier1=name) | Q(soldier2=name)| Q(soldier3=name)| Q(soldier4=name)).order_by('date')
+    days = []
+    for worker in workers:
+        days.append(str(worker.date)[5:7]+'월'+str(worker.date)[8:10]+'일')
+    return render(request, 'army_vacation/washworker.html', {'days' : days, 'workers' : workers})
