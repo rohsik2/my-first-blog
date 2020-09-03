@@ -32,4 +32,11 @@ class Worker(models.Model):
     night_soldier = models.TextField()
 
 
-    
+class NightWorker(models.Model):
+    date = models.DateField()
+    carde = models.CharField(max_length=10)
+    soldier1 = models.CharField(max_length=10)
+    soldier2 = models.CharField(max_length=10)
+    soldier3 = models.CharField(max_length=10)
+    soldier4 = models.CharField(max_length=10)
+    soldier5 = models.CharField(max_length=10)

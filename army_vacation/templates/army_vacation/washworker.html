@@ -1,0 +1,68 @@
+{% extends 'army_vacation/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class='row'>
+    <div class="background col s12 l6 center" style="align : center;">
+        <img src="{% static 'images/dish.JPG' %}" width='80%' height='80%' align = 'center'>
+    </div>
+<div class='food_ment col s12 l6 center' style="margin-top : 30px">
+    
+    <table>
+        <thead>
+          <tr>
+              {% for day in days %}
+              <th>{{day}}</th>
+              {% endfor %}
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+              {% for worker in workers %}
+              <td>{{worker.carde}}</td>
+              {% endfor %}
+          </tr>
+          <tr>
+              {% for worker in workers %}
+              <td>{{worker.soldier1}}</td>
+              {% endfor %}
+          </tr>
+          <tr>
+              {% for worker in workers %}
+              <td>{{worker.soldier2}}</td>
+              {% endfor %}
+          </tr>
+          <tr>
+              {% for worker in workers %}
+              <td>{{worker.soldier3}}</td>
+              {% endfor %}
+          </tr>
+          <tr>
+              {% for worker in workers %}
+              <td>{{worker.soldier4}}</td>
+              {% endfor %}
+          </tr>
+          <tr>
+              {% for worker in workers %}
+              <td>{{worker.soldier5}}</td>
+              {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    <script>
+    function doSomething() {
+        // alert(document.forms[0].elements['name'].value);
+        var url = "worker/"+document.forms[0].elements['name'].value;
+        window.location = url;
+        return false;
+    }
+    </script>
+
+    <form onsubmit="return doSomething();" class="my-form">
+        <input type="text" name="name" placeholder="이름을 입력해주세요">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+{% endblock %}

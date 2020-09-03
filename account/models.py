@@ -10,11 +10,11 @@ class UserManager(BaseUserManager):
             raise ValueError('Soldier must have Join date')
         user = self.model(
             email=self.normalize_email(email),
-            name = name,
+            name=name,
             date_of_birth=date_of_birth,
             date_of_join=date_of_join,
         )
-
+        user.is_admin = False
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -23,7 +23,7 @@ class UserManager(BaseUserManager):
         user = self.create_user(
             email,
             password=password,
-            name = name,
+            name=name,
             date_of_birth=date_of_birth,
             date_of_join=date_of_join,
         )

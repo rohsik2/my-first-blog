@@ -23,9 +23,9 @@
               <div class="background">
                 <img src="{% static 'images/Logo.jpg' %}">
               </div>
-            {% if user.authenticated %}
-              <a href="/account/sign_in"><span class="white-text name">user.name</span></a>
-              <a href="#!email"><span class="white-text email">user.email</span></a>
+            {% if user.is_authenticated %}
+              <a href="/account"><span class="white-text name">{{user.name}}</span></a>
+              <a href="/account"><span class="white-text email">{{user.email}}</span></a>
             {% else %}
                 <a href="/account/login"><span class="white-text name">로그인을 해주세요</span></a>
             {% endif %}
@@ -43,7 +43,8 @@
             <li><div class="divider"></div></li>
             <li><a class="subheader">병영생활</a></li>
             <li><a class="waves-effect" a href="/food">오늘의 밥</a></li>
-            <li><a class="waves-effect" a href="/worker">내일 근무</a></li>
+            <li><a class="waves-effect" a href="/worker">불침번 근무</a></li>
+            <li><a class="waves-effect" a href="/washdish">식기 근무</a></li>
             <li><a class="waves-effect" a href="/blog">전파 사항</a></li>
         </ul>
         <div class="row header">
@@ -54,7 +55,7 @@
                 <div class="col s8" style="text-align : center">
                     <a href="/" style="color:black">
                     <h2>
-                        휴가플래너
+                        B2 매니저
                     </h2>
                     </a>
                     

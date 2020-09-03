@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
 
 
-#https://swarf00.github.io/2018/12/10/login.html
+# https://swarf00.github.io/2018/12/10/login.html
 def sign_in(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -16,10 +16,11 @@ def sign_in(request):
         form = UserCreationForm()
     return render(request, 'account/sign_in.html', {'form' : form})
 
-class UserLoginView(LoginView):
-    template_name = 'account/login.html'
-    def from_invalid(self, form):
-        message.error(self.request, '로그인에 실패했습니다.', extra_tage='danger')
-        return super().form_invalid(form)
 
-        
+
+def info(request):
+    if request.user.is_authenticated:
+        return render(request, 'account/info.html')
+    else:
+        return redirect('login')
+

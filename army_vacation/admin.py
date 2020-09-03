@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Vacation)
 admin.site.register(Menu)
 admin.site.register(Worker)
+admin.site.register(NightWorker)

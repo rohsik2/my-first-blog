@@ -2,35 +2,43 @@
 {% load staticfiles %}
 {% block content %}
 <div class='row'>
-    <div class="background col s12 l6" style="align : center;">
+    <div class="background col s12 l6 center" style="align : center;">
+        
+    <h5>{{food.date}} 식단</h5>
     <img src="{% static 'images/rice.jpg' %}" width='80%' height='80%'>
 </div>
 <div class='food_ment col s12 l6' style="margin-top : 30px">
     
-    <div class="divider"></div>
+      <div class="divider"></div>
       <div class="section">
         <h5>아침밥</h5>
-        <p>{% for food in today_food %}
-        {{food.breakfast}},	
-        {% endfor %}
+        <p>
+        {{food.breakfast}}
           </p>
       </div>
       <div class="divider"></div>
       <div class="section">
         <h5>점심밥</h5>
-        <p>{% for food in today_food %}
-        {{food.lunch}},	
-        {% endfor %}
+        <p>
+        {{food.lunch}}
           </p>
       </div>
       <div class="divider"></div>
       <div class="section">
         <h5>저녁밥</h5>
-        <p>{% for food in today_food %}
-        {{food.dinner}},	
-        {% endfor %}
+        <p>
+        {{food.dinner}}
           </p>
       </div>
+      <a href="{% url 'food' n_day %}">다음날 밥은?</a>
+    
+    
+    
+    
+    
+
+    
+    
     
 </div>
 
