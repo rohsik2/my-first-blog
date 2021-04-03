@@ -41,7 +41,7 @@ def food(request, id=0):
         foods = get_object_or_404(Menu, date = (timezone.now()+timezone.timedelta(days=id)))
     else:
         new_food = Menu()
-        new_food.date = timezone.now()+timezone.timedelta(days=id)
+        new_food.date = (timezone.now()+timezone.timedelta(days=id)).date()
         new_food.breakfast = "입력을 기다려... 주세요..."
         new_food.lunch = "입력을 기다려... 주세요..."
         new_food.dinner = "입력을 기다려... 주세요..."
