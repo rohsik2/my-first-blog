@@ -81,7 +81,7 @@ def wash_worker(request, name=''):
         startdate = date.today()
         enddate = startdate + timedelta(days=30)
         workers = WashWorker.objects.filter(
-            Q(date__range=(startdate, enddate)) | Q(soldier1=name) | Q(soldier2=name)| Q(soldier3=name)| Q(soldier4=name)).order_by('date')
+             Q(soldier1=name) | Q(soldier2=name)| Q(soldier3=name)| Q(soldier4=name) & Q(date__range=(startdate, enddate))).order_by('date')
     days = []
     for worker in workers:
         days.append(str(worker.date)[5:7]+'월'+str(worker.date)[8:10]+'일')
