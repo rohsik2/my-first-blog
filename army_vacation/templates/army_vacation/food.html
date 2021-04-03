@@ -30,8 +30,9 @@
         {{food.dinner}}
           </p>
       </div>
+      {% if p_day >= 0 %}
       <a href="{% url 'food' p_day %}">어젯날 밥은?</a>
-    
+      {% endif %}
       <a href="{% url 'food' n_day %}">다음날 밥은?</a>
     
     
