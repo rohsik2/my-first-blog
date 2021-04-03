@@ -49,7 +49,7 @@ def food(request, id=0):
         foods = new_food
     n_food = int(id)+1
     prev_food = int(id)-1
-    return render(request, 'army_vacation/food.html', {'food': foods, 'n_day':n_food, 'prev_day' : p_day})
+    return render(request, 'army_vacation/food.html', {'food': foods, 'n_day':n_food, 'p_day' : prev_food})
 
 
 def vacation_list(request):
