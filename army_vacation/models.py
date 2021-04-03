@@ -39,7 +39,7 @@ class WashWorker(models.Model):
     soldier3 = models.CharField(max_length=10)
     soldier4 = models.CharField(max_length=10)
     def __str__(self):
-        return str(self.date + self.time)
+        return str(self.date) + self.time
 
 class NightWorker(models.Model):
     date = models.DateField()
