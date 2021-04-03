@@ -12,5 +12,5 @@ And [this](https://tutorial.djangogirls.org/) is the direct link to the tutorial
 
 | col 1      | col 2      |
 |------------|-------------|
-| <img src="./pictures/Screenshot1.jpg" width="250"> | <img src="./pictures/Screenshot1.jpg" width="250"> |
+| <img src="./pictures/Screenshot1.jpg" width="250"> | <img src="./pictures/Screenshot2.jpg" width="250"> |
 | <img src="./pictures/Screenshot3.jpg" width="250"> | <img src="./pictures/Screenshot4.jpg" width="250"> |
