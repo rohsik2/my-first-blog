@@ -9,7 +9,8 @@ If you don't know Django Girls you can check them out [here](https://djangogirls
 they are awesome!
 
 And [this](https://tutorial.djangogirls.org/) is the direct link to the tutorial.
-![Screenshot](./pictures/Screenshot1.jpg)
-![Screenshot](./pictures/Screenshot2.jpg)
-![Screenshot](./pictures/Screenshot3.jpg)
-![Screenshot](./pictures/Screenshot4.jpg)
+
+| col 1      | col 2      |
+|------------|-------------|
+| <img src="./pictures/Screenshot1.jpg" width="250"> | <img src="./pictures/Screenshot1.jpg" width="250"> |
+| <img src="./pictures/Screenshot3.jpg" width="250"> | <img src="./pictures/Screenshot4.jpg" width="250"> |
