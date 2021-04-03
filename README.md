@@ -9,3 +9,7 @@ If you don't know Django Girls you can check them out [here](https://djangogirls
 they are awesome!
 
 And [this](https://tutorial.djangogirls.org/) is the direct link to the tutorial.
+![Screenshot](./pictures/screenshot1.jpg)
+![Screenshot](./pictures/screenshot2.jpg)
+![Screenshot](./pictures/screenshot3.jpg)
+![Screenshot](./pictures/screensho4t.jpg)
