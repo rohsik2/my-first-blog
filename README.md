@@ -3,14 +3,16 @@
 이후 군내에서 가볍게 사용가능한 식단표, 근무표 등등을 볼 수 있도록 개발 진행 했었습니다.
 - 전역이후 더이상 호스팅 하지 않습니다.
 
+
+| col 1      | col 2      |
+|------------|-------------|
+| <img src="./pictures/Screenshot1.jpg" width="250"> | <img src="./pictures/Screenshot2.jpg" width="250"> |
+| <img src="./pictures/Screenshot3.jpg" width="250"> | <img src="./pictures/Screenshot4.jpg" width="250"> |
+
+
 # Django tutorial from Django Girls
 
 If you don't know Django Girls you can check them out [here](https://djangogirls.org/)
 they are awesome!
 
 And [this](https://tutorial.djangogirls.org/) is the direct link to the tutorial.
-
-| col 1      | col 2      |
-|------------|-------------|
-| <img src="./pictures/Screenshot1.jpg" width="250"> | <img src="./pictures/Screenshot2.jpg" width="250"> |
-| <img src="./pictures/Screenshot3.jpg" width="250"> | <img src="./pictures/Screenshot4.jpg" width="250"> |
