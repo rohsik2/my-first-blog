@@ -48,7 +48,7 @@ def food(request, id=0):
         new_food.save()
         foods = new_food
     n_food = int(id)+1
-    prev_food - int(id)-1
+    prev_food = int(id)-1
     return render(request, 'army_vacation/food.html', {'food': foods, 'n_day':n_food, 'prev_day' : p_day})
 
 
