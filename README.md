@@ -1,18 +1,22 @@
-장고 걸스 튜토리얼을 보고 기본적인 기능들을 구현했습니다.
+# B2 매니저
+장고걸스 튜토리얼을 한번 따라해 본 뒤, 군내에서 식단표, 근무표, 등등을 온라인으로 볼 수 있게 개발 했습니다.
 
-이후 군내에서 가볍게 사용가능한 식단표, 근무표 등등을 볼 수 있도록 개발 진행 했었습니다.
 - 전역이후 더이상 호스팅 하지 않습니다.
 
+## 사용기술
+### Backend
+- Django
+- Maria DB
+
+### Frontend
+- Materialize
+- JS, CSS, HTML
 
 | col 1      | col 2      |
 |------------|-------------|
 | <img src="./pictures/Screenshot1.jpg" width="250"> | <img src="./pictures/Screenshot2.jpg" width="250"> |
-| <img src="./pictures/Screenshot3.jpg" width="250"> | <img src="./pictures/Screenshot4.jpg" width="250"> |
+| <img src="./pictures/Screenshot3.jpg" width="250"> | <img src="./pictures/Screenshot5.png" width="250"> |
 
 
-# Django tutorial from Django Girls
-
-If you don't know Django Girls you can check them out [here](https://djangogirls.org/)
-they are awesome!
-
-And [this](https://tutorial.djangogirls.org/) is the direct link to the tutorial.
+## Django tutorial from Django Girls
+[this](https://tutorial.djangogirls.org/) is the direct link to the tutorial.
