@@ -18,5 +18,3 @@
 | <img src="./pictures/Screenshot3.jpg" width="250"> | <img src="./pictures/Screenshot5.png" width="250"> |
 
 
-## Django tutorial from Django Girls
-[this](https://tutorial.djangogirls.org/) is the direct link to the tutorial.
